@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Review Summary",
+  "description": "Summarizes the review comments",
+  "version": "1.0",
+  "action": {
+    "default_popup": "main_popup.html",
+    "default_icon": "ic.png"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}
