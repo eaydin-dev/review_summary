@@ -13,5 +13,8 @@
     },
     "loading": {
         "message": "Loading"
+    },
+    "genericError": {
+        "message": "Something went wrong. Please try again."
     }
 }

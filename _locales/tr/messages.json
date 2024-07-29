@@ -13,5 +13,8 @@
     },
     "loading": {
         "message": "Yükleniyor"
+    },
+    "genericError": {
+        "message": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
     }
 }

@@ -7,7 +7,6 @@ async function getAllReviewsTy(url) {
     console.error('error');
     return;
   }
-  let ratingCounts = response.result?.contentSummary?.ratingCounts ?? [];
   let productReviews = response.result?.productReviews;
   let totalPages = productReviews?.totalPages ?? 0;
   let reviews = mapReviewsTy(productReviews?.content ?? []);
@@ -18,9 +17,7 @@ async function getAllReviewsTy(url) {
     reviews = reviews.concat(r);
   }
 
-  console.log('reviews');
-  console.log(reviews);
-  return {ratingCounts, reviews};
+  return {reviews};
 }
 
 
@@ -49,7 +46,7 @@ function getReviewsUrlTy(url, page = 0) {
   if (!contentId || contentId.length < 5 || !contentId.length > 10) {
     return null;
   }
-  let reviewUrl = `https://justcors.com/tl_6bbc215/https://public-mdc.trendyol.com/discovery-web-websfxsocialreviewrating-santral/product-reviews-detailed?contentId=${contentId}&page=${page}&order=DESC&orderBy=Score&channelId=1`;
+  let reviewUrl = `https://cors-ea-749769a277fd.herokuapp.com/https://public-mdc.trendyol.com/discovery-web-websfxsocialreviewrating-santral/product-reviews-detailed?contentId=${contentId}&page=${page}&order=DESC&orderBy=Score&channelId=1`;
   return reviewUrl;
 }
 
