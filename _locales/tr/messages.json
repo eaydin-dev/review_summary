@@ -1,0 +1,17 @@
+{
+    "extName": {
+        "message": "Ürün yorum özeti"
+    },
+    "extDescription": {
+        "message": "Ürün yorumlarını özetleyin"
+    },
+    "getSummary": {
+        "message": "Özet al"
+    },
+    "notValidUrl": {
+        "message": "URL geçerli değil.\n\nBir ürün sayfasında bulunğunuzdan emin olun."
+    },
+    "loading": {
+        "message": "Yükleniyor"
+    }
+}

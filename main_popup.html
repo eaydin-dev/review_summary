@@ -1,11 +1,16 @@
 <html>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="scripts/common.js"></script>
   <script src="scripts/openai.js"></script>
   <script src="scripts/trendyol.js"></script>
   
   <body>
-    <h1>Ürün yorum özeti</h1>
-    <button id="get_summary">Özet al</button>
-    <div id="summary"></div>
+    <h1 id="title"></h1>
+    <button id="get_summary" class="button">
+      Loading
+    </button>
+    <pre id="summary"></pre>
   </body>
   <script src="popup.js"></script>
 </html>

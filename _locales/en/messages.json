@@ -1,0 +1,17 @@
+{
+    "extName": {
+        "message": "Product Review Summary"
+    },
+    "extDescription": {
+        "message": "Summarizes the review comments"
+    },
+    "getSummary": {
+        "message": "Get Summary"
+    },
+    "notValidUrl": {
+        "message": "URL is not valid.\n\nMake sure you are on a product page."
+    },
+    "loading": {
+        "message": "Loading"
+    }
+}

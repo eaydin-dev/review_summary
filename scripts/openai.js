@@ -5,7 +5,7 @@ function getSystemPrompt() {
   let promptLines = [
     `You are an expert product reviewer. Your main task is to read, understand and make a conclusion of a review for a product.`,
     `You will be given a number of product reviews done by a purchased person. The review's language will be Turkish for the most cases, but it might be other languages as well.`,
-    `You will first eliminate any non-meaningful reviews (for example, if the review is about price or packaging or delivery status/time, you will ignore it).`,
+    `You will first eliminate any non-meaningful reviews (for example, if the review is about price or packaging or delivery, you will ignore it).`,
     `Then, use meaningful reviews to summarize and generate key features that reviewers most liked, disliked, satisfied or not satisfied.`,
     ``,
     `Your goal is to generate an overall review of the product. One can read your result and decide if they should buy the product or not.`,
@@ -14,14 +14,15 @@ function getSystemPrompt() {
     getSampleForPrompt(),
     ``,
     `The ratings are from 1 to 5.`,
+    `"language" field is the language of the desired output. It can be "en" or "tr". Your output should be in this language.`,
     `"ratingCounts" field shows how many users rated for a rating.`,
     `"reviews" field holds the actual reviews with its rating, comment and how many times this review was liked by other users.`,
     `You can consider a review with higher like count to be more prominent.`,
     ``,
     `Your output will be in the following format:`,
-    `Neleri beğenildi: {What exactly was liked about this product? Do not include any non-meaningful reviews like price, packaging, delivery status/time}`,
-    `Neleri beğenilmedi: {What exactly was not liked about this product? Do not include any non-meaningful reviews like price, packaging, delivery status/time}`,
-    `Özet: {Put your overall review here. Keep it at max 5 sentences}`
+    `Neleri beğenildi (in language provided in "language" field): {What exactly was liked about this product? Do not include any non-meaningful reviews like price, packaging, delivery}`,
+    `Neleri beğenilmedi (in language provided in "language" field): {What exactly was not liked about this product? Do not include any non-meaningful reviews like price, packaging, delivery}`,
+    `Özet (in language provided in "language" field): {Put your overall review here. Keep it at max 5 sentences. Do not include any non-meaningful reviews like price, packaging, delivery}`
   ];
 
   return promptLines.join('\n');
@@ -73,7 +74,8 @@ function getSampleForPrompt() {
         "comment": "her zaman kullandığım koku stok yapıyorum",
         "reviewLikeCount": 0
       }
-    ]
+    ],
+    "language": "tr"
   });
 }
 
@@ -100,7 +102,7 @@ async function getSummary(ratingCounts, reviews) {
           "role": "user",
           "content": [
             {
-              "text": JSON.stringify({ratingCounts, reviews}),
+              "text": JSON.stringify({ratingCounts, reviews, language: getLanguage()}),
               "type": "text"
             }
           ]

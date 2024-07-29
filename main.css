@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  max-width: 400px;
+  width: 400px;
+
+  min-height: 300px;
+  height: 300px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+pre {
+  background-color: #f1f1f1;
+  padding: 12px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+
+.button {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}

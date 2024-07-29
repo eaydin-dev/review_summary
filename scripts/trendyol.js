@@ -1,5 +1,6 @@
 async function getAllReviewsTy(url) {
   let reviewUrl = getReviewsUrlTy(url);
+
   let response = await fetch(reviewUrl)
     .then((res) => res.json());
   if (!response.isSuccess || !response.result) {
@@ -11,7 +12,8 @@ async function getAllReviewsTy(url) {
   let totalPages = productReviews?.totalPages ?? 0;
   let reviews = mapReviewsTy(productReviews?.content ?? []);
 
-  for (let i = 1; i <= 2; i++) {
+  totalPages = totalPages > 5 ? 3 : totalPages;
+  for (let i = 1; i <= totalPages; i++) {
     let r = await getReviewsTy(url, i);
     reviews = reviews.concat(r);
   }
@@ -36,8 +38,18 @@ async function getReviewsTy(url, page = 0) {
 
 function getReviewsUrlTy(url, page = 0) {
   let urlArray = url.split('?');
+  if (!urlArray || urlArray.length < 1) {
+    return null;
+  }
+  if (!urlArray[0].includes('-')) {
+    return null;
+  }
+  
   let contentId = urlArray[0].split('-')?.pop();
-  let reviewUrl = `https://justcors.com/tl_a5bfbe1/https://public-mdc.trendyol.com/discovery-web-websfxsocialreviewrating-santral/product-reviews-detailed?contentId=${contentId}&page=${page}&order=DESC&orderBy=Score&channelId=1`;
+  if (!contentId || contentId.length < 5 || !contentId.length > 10) {
+    return null;
+  }
+  let reviewUrl = `https://justcors.com/tl_6bbc215/https://public-mdc.trendyol.com/discovery-web-websfxsocialreviewrating-santral/product-reviews-detailed?contentId=${contentId}&page=${page}&order=DESC&orderBy=Score&channelId=1`;
   return reviewUrl;
 }
 
