@@ -30,7 +30,7 @@ function hideLoading(success = true) {
 }
 
 function writeNotValidUrl() {
-  document.getElementById('get_summary').disabled = true;
+  document.getElementById('get_summary').style.display = 'none';
   document.getElementById('get_summary').innerHTML = chrome.i18n.getMessage("getSummary");
   document.getElementById('summary').innerHTML = chrome.i18n.getMessage("notValidUrl");
 }
@@ -51,5 +51,6 @@ function validateUrl() {
     } else {
       writeNotValidUrl();
     }
+    document.getElementById('get_summary').style.display = 'block';
   });
 }

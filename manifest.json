@@ -6,7 +6,18 @@
   "default_locale": "tr",
   "action": {
     "default_popup": "main_popup.html",
-    "default_icon": "ic.png"
+    "default_icon": {
+      "32": "icons/32.png",
+      "72": "icons/72.png",
+      "128": "icons/128.png",
+      "512": "icons/512.png"
+    }
+  },
+  "icons": {
+    "32": "icons/32.png",
+    "72": "icons/72.png",
+    "128": "icons/128.png",
+    "512": "icons/512.png"
   },
   "permissions": [
     "tabs"
