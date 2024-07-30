@@ -1,5 +1,4 @@
-document.getElementById('title').textContent = chrome.i18n.getMessage("extName");
-document.getElementById('get_summary').textContent = chrome.i18n.getMessage("getSummary");
+initUI();
 validateUrl();
 
 document.getElementById('get_summary').addEventListener('click', async () => {
@@ -11,6 +10,10 @@ document.getElementById('get_summary').addEventListener('click', async () => {
       writeNotValidUrl();
     }
   });
+});
+
+document.getElementById('donate_button').addEventListener('click', async () => {
+  chrome.tabs.create({ url: 'https://kreosus.com/eaydin' });
 });
 
 async function runTrendyol(url) {
@@ -28,12 +31,6 @@ async function runTrendyol(url) {
 
 function processSummary(summaryResponse) {
   let summary = summaryResponse.choices[0].message.content.replace('\n', '<br/> <br/>');
-  // return summary;
   document.getElementById('summary').innerHTML = summary;
-
-
-  // let summaryLines = summary.split('\n');
-  // let summaryText = summaryLines.slice(1, summaryLines.length - 1).join('\n');
-  // return summaryText;
 }
 

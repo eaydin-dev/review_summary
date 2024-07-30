@@ -27,6 +27,7 @@ function displayLoading() {
 function hideLoading(success = true) {
   document.getElementById('get_summary').disabled = false;
   document.getElementById('get_summary').innerHTML = (success ? '<i class="fa-solid fa-check"></i> ' : '') + chrome.i18n.getMessage("getSummary");
+  document.getElementById('donate_button').style.display = 'block';
 }
 
 function writeNotValidUrl() {
@@ -53,4 +54,10 @@ function validateUrl() {
     }
     document.getElementById('get_summary').style.display = 'block';
   });
+}
+
+function initUI() {
+  document.getElementById('title').textContent = chrome.i18n.getMessage("extName");
+  document.getElementById('get_summary').textContent = chrome.i18n.getMessage("getSummary");
+  document.getElementById('donate_button').style.display = 'none';
 }

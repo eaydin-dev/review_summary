@@ -29,7 +29,23 @@ pre {
   font-size: 16px;
 }
 
+.donateButton {
+  background-color: #22976c;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 12px;
+}
+
 .fa {
   margin-left: -12px;
   margin-right: 8px;
+}
+
+.buttonContainer {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
