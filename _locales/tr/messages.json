@@ -16,5 +16,14 @@
     },
     "genericError": {
         "message": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+    },
+    "whatWasLiked": {
+        "message": "Ne beğenildi"
+    },
+    "whatWasNotLiked": {
+        "message": "Ne beğenilmedi"
+    },
+    "overallReview": {
+        "message": "Genel inceleme"
     }
 }

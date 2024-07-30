@@ -16,5 +16,14 @@
     },
     "genericError": {
         "message": "Something went wrong. Please try again."
+    },
+    "whatWasLiked": {
+        "message": "What was liked"
+    },
+    "whatWasNotLiked": {
+        "message": "What was not liked"
+    },
+    "overallReview": {
+        "message": "Overall review"
     }
 }
