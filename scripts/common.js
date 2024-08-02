@@ -1,11 +1,11 @@
 function getLanguage() {
   let language = chrome.i18n.getUILanguage();
-  if (language === 'en' || language.includes('en-')) {
-    return 'en';
-  } else if (language === 'tr') {
-    return 'tr';
+  if (language === "en" || language.includes("en-")) {
+    return "en";
+  } else if (language === "tr") {
+    return "tr";
   } else {
-    return 'en';
+    return "en";
   }
 }
 
@@ -13,37 +13,59 @@ function displayError(error = null) {
   if (!error) {
     error = chrome.i18n.getMessage("genericError");
   }
-  document.getElementById('get_summary').disabled = true;
-  document.getElementById('get_summary').innerHTML = '<i class="fa-solid fa-circle-xmark"></i> ' + chrome.i18n.getMessage("getSummary");
-  document.getElementById('summary').innerHTML = `<p style="color: red;">${error}</p>`;
+  document.getElementById("get_summary").disabled = true;
+  document.getElementById("get_summary").innerHTML =
+    '<i class="fa-solid fa-circle-xmark"></i> ' +
+    chrome.i18n.getMessage("getSummary");
+  document.getElementById(
+    "summary"
+  ).innerHTML = `<p style="color: red;">${error}</p>`;
+}
+
+function displayNotEnoughReviews() {
+  document.getElementById("get_summary").disabled = true;
+  document.getElementById("get_summary").innerHTML =
+    '<i class="fa-solid fa-circle-xmark"></i> ' +
+    chrome.i18n.getMessage("getSummary");
+  document.getElementById(
+    "summary"
+  ).innerHTML = `<p style="color: red;">${chrome.i18n.getMessage(
+    "notEnoughReviews"
+  )}</p>`;
 }
 
 function displayLoading() {
-  document.getElementById('get_summary').disabled = true;
-  document.getElementById('get_summary').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ' + chrome.i18n.getMessage("loading");
-  document.getElementById('summary').innerHTML = '';
+  document.getElementById("get_summary").disabled = true;
+  document.getElementById("get_summary").innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> ' +
+    chrome.i18n.getMessage("loading");
+  document.getElementById("summary").innerHTML = "";
 }
 
 function hideLoading(success = true) {
-  document.getElementById('get_summary').disabled = false;
-  document.getElementById('get_summary').innerHTML = (success ? '<i class="fa-solid fa-check"></i> ' : '') + chrome.i18n.getMessage("getSummary");
-  document.getElementById('donate_button').style.display = 'block';
+  document.getElementById("get_summary").disabled = false;
+  document.getElementById("get_summary").innerHTML =
+    (success ? '<i class="fa-solid fa-check"></i> ' : "") +
+    chrome.i18n.getMessage("getSummary");
+  document.getElementById("donate_button").style.display = "block";
 }
 
 function writeNotValidUrl() {
-  document.getElementById('get_summary').style.display = 'none';
-  document.getElementById('get_summary').innerHTML = chrome.i18n.getMessage("getSummary");
-  document.getElementById('summary').innerHTML = chrome.i18n.getMessage("notValidUrl");
+  document.getElementById("get_summary").style.display = "none";
+  document.getElementById("get_summary").innerHTML =
+    chrome.i18n.getMessage("getSummary");
+  document.getElementById("summary").innerHTML =
+    chrome.i18n.getMessage("notValidUrl");
 }
 
 function validateUrl() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     let url = tabs[0]?.url;
-    if (!url || !url.includes('?')) {
+    if (!url || !url.includes("-")) {
       writeNotValidUrl();
       return;
     }
-    if (url.includes('https://www.trendyol.com')) {
+    if (url.includes("https://www.trendyol.com")) {
       let reviewUrl = getReviewsUrlTy(url);
       if (!reviewUrl) {
         writeNotValidUrl();
@@ -52,12 +74,14 @@ function validateUrl() {
     } else {
       writeNotValidUrl();
     }
-    document.getElementById('get_summary').style.display = 'block';
+    document.getElementById("get_summary").style.display = "block";
   });
 }
 
 function initUI() {
-  document.getElementById('title').textContent = chrome.i18n.getMessage("extName");
-  document.getElementById('get_summary').textContent = chrome.i18n.getMessage("getSummary");
-  document.getElementById('donate_button').style.display = 'none';
+  document.getElementById("title").textContent =
+    chrome.i18n.getMessage("extName");
+  document.getElementById("get_summary").textContent =
+    chrome.i18n.getMessage("getSummary");
+  document.getElementById("donate_button").style.display = "none";
 }

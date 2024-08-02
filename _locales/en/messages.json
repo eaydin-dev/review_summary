@@ -25,5 +25,8 @@
     },
     "overallReview": {
         "message": "Overall review"
+    },
+    "notEnoughReviews": {
+        "message": "There is not enough reviews to summarize."
     }
 }

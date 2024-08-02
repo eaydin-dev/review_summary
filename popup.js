@@ -19,6 +19,10 @@ document.getElementById("donate_button").addEventListener("click", async () => {
 async function runTrendyol(url) {
   try {
     let { reviews } = await getAllReviewsTy(url);
+    if (!reviews || reviews.length < 10) {
+      displayNotEnoughReviews();
+      return;
+    }
     let summaryResponse = await getSummary(reviews);
     processSummary(summaryResponse);
     hideLoading();
@@ -52,5 +56,6 @@ function processSummary(summaryResponse) {
       }
     });
 
-  document.getElementById("summary").innerHTML = summaryLines.join("<br/> <br/>");
+  document.getElementById("summary").innerHTML =
+    summaryLines.join("<br/> <br/>");
 }

@@ -25,5 +25,8 @@
     },
     "overallReview": {
         "message": "Genel inceleme"
+    },
+    "notEnoughReviews": {
+        "message": "Özetlemek için yeterli yorum yok."
     }
 }

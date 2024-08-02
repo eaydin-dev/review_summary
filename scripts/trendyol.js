@@ -6,31 +6,30 @@ async function getAllReviewsTy(url) {
     reviews = reviews.concat(r);
   }
 
-  return {reviews};
+  return { reviews };
 }
 
 async function getReviewsTy(url, rates = 5) {
   let reviewUrl = getReviewsUrlTy(url, rates);
-  let response = await fetch(reviewUrl)
-    .then((res) => res.json());
+  let response = await fetch(reviewUrl).then((res) => res.json());
   if (!response.isSuccess || !response.result) {
-    console.error('error');
+    console.error("error");
     return [];
   }
   let productReviews = response.result?.productReviews;
-  return mapReviewsTy(productReviews?.content ?? []); 
+  return mapReviewsTy(productReviews?.content ?? []);
 }
 
 function getReviewsUrlTy(url, rates) {
-  let urlArray = url.split('?');
-  if (!urlArray || urlArray.length < 1) {
+  let first = url;
+  if (url.includes("?")) {
+    first = url.split("?")[0];
+  }
+  if (!first.includes("-")) {
     return null;
   }
-  if (!urlArray[0].includes('-')) {
-    return null;
-  }
-  
-  let contentId = urlArray[0].split('-')?.pop();
+
+  let contentId = first.split("-")?.pop();
   if (!contentId || contentId.length < 5 || !contentId.length > 10) {
     return null;
   }
